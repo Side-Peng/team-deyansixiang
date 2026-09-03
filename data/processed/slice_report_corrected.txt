@@ -1,0 +1,50 @@
+样本：1134（修正口径）；MEDHIST 覆盖 317 人（ADNI1/GO/2）
+
+===== ① 合并症代理（MEDHIST 系统标记）=====
+
+心血管 MH4CARD 阳性率：
+  PET−/Plasma−   12.75%  (n=541)
+  PET−/Plasma+   36.89%  (n=103)
+  PET+/Plasma−   13.13%  (n=99)
+  PET+/Plasma+   25.06%  (n=391)
+  卡方检验: chi2=46.2, p=5.028e-10
+
+内分泌 MH9ENDO 阳性率：
+  PET−/Plasma−   9.06%  (n=541)
+  PET−/Plasma+   26.21%  (n=103)
+  PET+/Plasma−   14.14%  (n=99)
+  PET+/Plasma+   12.79%  (n=391)
+  卡方检验: chi2=24.1, p=2.408e-05
+
+D_ADAS13_yr: 校正年龄/性别/教育 + 合并症后组系数（相对 PET−/Plasma−）
+  PET−/Plasma+  : +0.398
+  PET+/Plasma−  : +0.355
+  PET+/Plasma+  : +2.963
+  CARDIO        : -0.645
+  ENDO          : +0.292
+
+===== ② 诊断分层（CN/MCI/AD 层内四组结构复现性）=====
+
+--- CN（n=645）---
+  组                 n ADAS13_bl ΔADAS13/年
+  PET−/Plasma−    386       8.0     +0.24
+  PET−/Plasma+     64       9.2     +0.33
+  PET+/Plasma−     76       7.5     +0.42
+  PET+/Plasma+    119       9.7     +0.92
+  中间态判定: 中位 双阴=+0.24 ≤ P−/P+=+0.33 ≤ 双阳=+0.92
+  P−/P+ vs 双阴 p=0.2316；vs 双阳 p=0.0001865 → ❌ 非严格中间态
+
+--- MCI（n=371）---
+  组                 n ADAS13_bl ΔADAS13/年
+  PET−/Plasma−    144      12.3     +0.10
+  PET−/Plasma+     31      14.0     +0.53
+  PET+/Plasma−     23      12.3     +0.19
+  PET+/Plasma+    173      18.7     +1.70
+  中间态判定: 中位 双阴=+0.10 ≤ P−/P+=+0.53 ≤ 双阳=+1.70
+  P−/P+ vs 双阴 p=0.021；vs 双阳 p=0.006522 → ✅ 严格中间态
+
+--- AD（n=118）---
+  组                 n ADAS13_bl ΔADAS13/年
+  PET−/Plasma−     11      24.3     +1.72
+  PET−/Plasma+      8      28.3     -2.61
+  PET+/Plasma+     99      30.5     +5.01

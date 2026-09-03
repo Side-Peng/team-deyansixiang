@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOAI 探索台 · 影像–血浆不一致亚型</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">◈</span>
+    <div>
+      <h1>GOAI 探索台</h1>
+      <p>影像–血浆生物标志物「不一致」亚型 · ADNIMERGE2 总和数据</p>
+    </div>
+  </div>
+  <div class="status" id="statusBadge"><span class="dot"></span>连接中…</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="overview">总览</button>
+  <button class="tab" data-tab="explore">LLM 探索</button>
+  <button class="tab" data-tab="data">数据</button>
+  <button class="tab" data-tab="reports">报告</button>
+</nav>
+
+<main>
+  <!-- ============ 总览 ============ -->
+  <section id="tab-overview" class="panel active">
+    <div class="kpis" id="kpis"></div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head"><h2>认知轨迹（年化 Δ，中位数）</h2><span class="hint">trajectory_report</span></div>
+        <canvas id="chartTrajectory" height="300"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>tau PET 负担（meta-temporal SUVR，FTP）</h2><span class="hint">tau_report_corrected</span></div>
+        <canvas id="chartTau" height="300"></canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h2>探索时间线（最近 6 轮）</h2><span class="hint">exploration_log.jsonl</span></div>
+      <div id="timeline" class="timeline"><p class="empty">暂无探索记录</p></div>
+    </div>
+  </section>
+
+  <!-- ============ LLM 探索 ============ -->
+  <section id="tab-explore" class="panel">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head"><h2>LLM 接入</h2><span class="hint">OpenAI 兼容 chat/completions</span></div>
+        <form id="llmForm" class="form">
+          <label>API Key
+            <input type="password" id="llmKey" placeholder="sk-…（留空则用确定性 MockPolicy）" autocomplete="off">
+          </label>
+          <label>Base URL
+            <input type="text" id="llmBase" placeholder="https://api.openai.com/v1">
+          </label>
+          <label>模型
+            <input type="text" id="llmModel" placeholder="gpt-4o-mini">
+          </label>
+          <label class="inline"><input type="checkbox" id="llmRemember"> 记住配置（写入 llm_config.json，不入库）</label>
+          <label>探索轮数
+            <input type="number" id="llmRounds" value="8" min="1" max="20">
+          </label>
+          <button type="submit" class="btn primary" id="exploreBtn">▶ 启动探索闭环</button>
+        </form>
+        <p class="hint">LLM 每轮选择「动作 + 参数 + 理由 + 状态更新」，失败轮保留；无 key 时走确定性 MockPolicy（读真实反馈、可复现）。</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>任务输出</h2><span class="hint" id="taskState">idle</span></div>
+        <pre id="taskOutput" class="console">—</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 数据 ============ -->
+  <section id="tab-data" class="panel">
+    <div class="card">
+      <div class="card-head"><h2>替换数据</h2><span class="hint">上传 CSV 覆盖 data/raw/merged/ 中同名表</span></div>
+      <div id="dropZone" class="dropzone">
+        <p>拖拽 CSV 到这里，或 <span class="link">点击选择文件</span></p>
+        <p class="hint">支持多文件。文件名须匹配：PTDEMOG.csv / DXSUM.csv / CDR.csv / MMSE.csv / ADAS.csv / MEDHIST.csv / INITHEALTH.csv / UPENN_PLASMA_FUJIREBIO_QUANTERIX.csv / UCBERKELEY_AMY_6MM.csv / UCBERKELEY_TAU_6MM.csv</p>
+        <input type="file" id="fileInput" multiple accept=".csv" hidden>
+      </div>
+      <div id="uploadResult" class="hint"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h2>管线表清单</h2>
+        <div class="actions">
+          <button class="btn" id="btnQuick">⚡ 快速重跑（preprocess→四组）</button>
+          <button class="btn primary" id="btnPipeline">▶ 完整重跑管线</button>
+        </div>
+      </div>
+      <table class="table" id="tablesTable">
+        <thead><tr><th>表文件</th><th>行数</th><th>更新时间</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <pre id="pipelineOutput" class="console" hidden></pre>
+    </div>
+  </section>
+
+  <!-- ============ 报告 ============ -->
+  <section id="tab-reports" class="panel">
+    <div class="grid-side">
+      <div class="card">
+        <div class="card-head"><h2>聚合报告</h2><span class="hint">data/processed/</span></div>
+        <ul id="reportList" class="report-list"></ul>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2 id="reportTitle">选择左侧报告</h2></div>
+        <pre id="reportBody" class="console tall">—</pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

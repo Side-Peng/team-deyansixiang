@@ -1,0 +1,87 @@
+tau 表原始行数 / RID：2327 / 1357 → FTP+QC合格+最早扫描：1062 人
+
+# 修正口径（缺失血浆排除）
+
+================================================================
+【修正口径 exclude】
+================================================================
+四组人数：{0: 541, 1: 103, 2: 99, 3: 391}
+
+① tau 可评估覆盖：
+  PET−/Plasma−   n= 541  tau可评估= 445
+  PET−/Plasma+   n= 103  tau可评估=  77
+  PET+/Plasma−   n=  99  tau可评估=  79
+  PET+/Plasma+   n= 391  tau可评估= 268
+
+② meta-temporal SUVR（每 RID 最早 FTP 扫描，中位数）：
+  KW H=297.7, p=3.099e-64
+  PET−/Plasma−   n= 445  SUVR=1.170
+  PET−/Plasma+   n=  77  SUVR=1.203
+  PET+/Plasma−   n=  79  SUVR=1.195
+  PET+/Plasma+   n= 268  SUVR=1.398
+  两两 Mann-Whitney：
+    PET+/Plasma− vs PET−/Plasma−: p=0.0171 (n=79/445)
+    PET+/Plasma− vs PET+/Plasma+: p=0.0 (n=79/268)
+    PET−/Plasma+ vs PET−/Plasma−: p=0.0135 (n=77/445)
+    PET−/Plasma+ vs PET+/Plasma+: p=0.0 (n=77/268)
+
+③ tau 阳性率（三档阈值，非 ADNI 官方判定）：
+  PET−/Plasma−   ≥1.22=24.5%  ≥1.28=6.3%  ≥1.36=1.1%
+  PET−/Plasma+   ≥1.22=40.3%  ≥1.28=20.8%  ≥1.36=7.8%
+  PET+/Plasma−   ≥1.22=41.8%  ≥1.28=19.0%  ≥1.36=6.3%
+  PET+/Plasma+   ≥1.22=82.1%  ≥1.28=69.8%  ≥1.36=55.6%
+
+④ tau SUVR vs 血浆 p-tau217（Spearman，不一致组内）：
+  PET−/Plasma+   n= 77  rho=+0.013  p=0.9125
+  PET+/Plasma−   n= 79  rho=+0.036  p=0.7523
+
+⑤ 时间差敏感性（剔除 |tau−amyloid|>3 年）：
+  n=706  KW H=255.72994063157748 p=3.771101461140885e-55
+
+================================================================
+【初赛口径 missing_as_negative（对照）】
+================================================================
+四组人数：{0: 1018, 1: 103, 2: 585, 3: 391}
+
+① tau 可评估覆盖：
+  PET−/Plasma−   n=1018  tau可评估= 559
+  PET−/Plasma+   n= 103  tau可评估=  77
+  PET+/Plasma−   n= 585  tau可评估= 135
+  PET+/Plasma+   n= 391  tau可评估= 268
+
+② meta-temporal SUVR（每 RID 最早 FTP 扫描，中位数）：
+  KW H=315.6, p=4.214e-68
+  PET−/Plasma−   n= 559  SUVR=1.173
+  PET−/Plasma+   n=  77  SUVR=1.203
+  PET+/Plasma−   n= 135  SUVR=1.238
+  PET+/Plasma+   n= 268  SUVR=1.398
+  两两 Mann-Whitney：
+    PET+/Plasma− vs PET−/Plasma−: p=0.0 (n=135/559)
+    PET+/Plasma− vs PET+/Plasma+: p=0.0 (n=135/268)
+    PET−/Plasma+ vs PET−/Plasma−: p=0.0162 (n=77/559)
+    PET−/Plasma+ vs PET+/Plasma+: p=0.0 (n=77/268)
+
+③ tau 阳性率（三档阈值，非 ADNI 官方判定）：
+  PET−/Plasma−   ≥1.22=25.0%  ≥1.28=7.2%  ≥1.36=1.6%
+  PET−/Plasma+   ≥1.22=40.3%  ≥1.28=20.8%  ≥1.36=7.8%
+  PET+/Plasma−   ≥1.22=57.0%  ≥1.28=40.0%  ≥1.36=28.9%
+  PET+/Plasma+   ≥1.22=82.1%  ≥1.28=69.8%  ≥1.36=55.6%
+
+④ tau SUVR vs 血浆 p-tau217（Spearman，不一致组内）：
+  PET−/Plasma+   n= 77  rho=+0.013  p=0.9125
+  PET+/Plasma−   n= 79  rho=+0.036  p=0.7523
+
+⑤ 时间差敏感性（剔除 |tau−amyloid|>3 年）：
+  n=738  KW H=258.7072708968725 p=8.559400996482896e-56
+
+================================================================
+核心对照：PET+/Plasma−（影像先行型）的 tau 负担在两个口径下是否一致
+================================================================
+
+修正口径: 双阴=1.170  P−/P+=1.203  PET+/P−=1.195  双阳=1.398
+  PET+/Plasma− vs 双阴 p=0.0171 (n=79/445)；vs 双阳 p=0.0
+
+初赛口径: 双阴=1.173  P−/P+=1.203  PET+/P−=1.238  双阳=1.398
+  PET+/Plasma− vs 双阴 p=0.0 (n=135/559)；vs 双阳 p=0.0
+
+判读提醒：PET+/Plasma− 组 tau 可评估比例低（选择偏倚）；tau 阈值为文献 cutoff 非 ADNI 官方。

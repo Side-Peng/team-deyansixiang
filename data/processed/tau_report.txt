@@ -1,0 +1,42 @@
+tau 表原始: 2327 行 / 1357 RID → 筛选 FTP+QC合格+最早扫描: 1062 人
+
+===== ① tau 可评估覆盖（FTP + QC 合格）=====
+  PET−/Plasma−   n= 541  tau 可评估= 445  (82.3%)
+  PET−/Plasma+   n= 103  tau 可评估=  77  (74.8%)
+  PET+/Plasma−   n=  99  tau 可评估=  79  (79.8%)
+  PET+/Plasma+   n= 391  tau 可评估= 268  (68.5%)
+
+===== ② meta-temporal SUVR（每 RID 最早 FTP 扫描，中位数 [IQR]）=====
+四组 KW: H=297.7, p=3.099e-64
+  PET−/Plasma−   n= 445  SUVR=1.170 [1.130, 1.218]
+  PET−/Plasma+   n=  77  SUVR=1.203 [1.147, 1.260]
+  PET+/Plasma−   n=  79  SUVR=1.195 [1.129, 1.260]
+  PET+/Plasma+   n= 268  SUVR=1.398 [1.257, 1.704]
+两两 Mann-Whitney:
+  PET+/Plasma− vs PET−/Plasma−: p=0.01707
+  PET+/Plasma− vs PET+/Plasma+: p=1.805e-18
+  PET−/Plasma+ vs PET−/Plasma−: p=0.01351
+  PET−/Plasma+ vs PET+/Plasma+: p=4.039e-17
+
+===== ③ tau 阳性率（FTP meta-temporal 文献常用阈值，三档敏感性；非 ADNI 官方判定）=====
+  组                  n  ≥1.22 %  ≥1.28 %  ≥1.36 %
+  PET−/Plasma−     445     24.5%      6.3%      1.1%
+  PET−/Plasma+      77     40.3%     20.8%      7.8%
+  PET+/Plasma−      79     41.8%     19.0%      6.3%
+  PET+/Plasma+     268     82.1%     69.8%     55.6%
+
+===== ④ tau SUVR vs 血浆 p-tau217（Spearman，不一致组内）=====
+  PET−/Plasma+   n= 77  rho=+0.013, p=0.9125
+  PET+/Plasma−   n= 79  rho=+0.036, p=0.7523
+
+===== ⑤ 时间差敏感性（tau vs amyloid 扫描）=====
+  时间差(天) 中位=+7，|差|>3年(1095天) 占比 14.4%
+  剔除 >3 年后（n=706）四组 KW: H=255.7, p=3.771e-55
+    PET−/Plasma−   n= 377  SUVR=1.169 [1.129, 1.218]
+    PET+/Plasma−   n=  68  SUVR=1.196 [1.130, 1.257]
+    PET+/Plasma+   n= 225  SUVR=1.406 [1.256, 1.754]
+
+===== 机制判读（描述性，样本量注明）=====
+  双阴=1.17 < P−/P+=1.20 < PET+/P−=1.20 ≈ 双阳=1.40 ?
+  → PET+/Plasma− tau 负担接近双阴：PET 阳性更可能是假阳性/非 tau 负荷
+  注意：PET+/Plasma− 仅 79/99 可评估（79.8%），选择偏倚是主要局限。

@@ -1,0 +1,12 @@
+{
+  "p_tau217_pg_ml": {
+    "auc": 0.889,
+    "youden_thr": 0.183,
+    "n_discord": 202
+  },
+  "abeta_ratio": {
+    "auc": 0.791,
+    "youden_thr": 0.085,
+    "n_discord": 293
+  }
+}

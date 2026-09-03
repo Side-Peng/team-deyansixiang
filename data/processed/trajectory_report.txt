@@ -1,0 +1,43 @@
+样本：1134（基线双状态+年龄齐全）；随访: CDRSB 1134 人 / ADAS13 1131 人
+
+===== ① 年化变化率（Δ/年，中位数 [IQR]）=====
+
+D_CDRSB_yr:
+  PET−/Plasma−   n= 397  中位=+0.00 [+0.00, +0.03]  随访年数=4.1
+  PET−/Plasma+   n=  90  中位=+0.00 [+0.00, +0.16]  随访年数=6.7
+  PET+/Plasma−   n=  76  中位=+0.00 [+0.00, +0.11]  随访年数=4.0
+  PET+/Plasma+   n= 322  中位=+0.48 [+0.03, +1.37]  随访年数=3.0
+
+D_ADAS13_yr:
+  PET−/Plasma−   n= 388  中位=+0.23 [-0.23, +0.77]  随访年数=4.1
+  PET−/Plasma+   n=  90  中位=+0.40 [-0.12, +0.92]  随访年数=6.7
+  PET+/Plasma−   n=  74  中位=+0.35 [-0.15, +1.12]  随访年数=4.0
+  PET+/Plasma+   n= 317  中位=+1.66 [+0.53, +4.04]  随访年数=3.0
+
+===== ② 组间检验（Kruskal-Wallis + Mann-Whitney）=====
+
+D_CDRSB_yr: KW H=199.6, p=5.171e-43
+  PET−/Plasma+ vs PET−/Plasma−: n=90/397 p=0.00471
+  PET−/Plasma+ vs PET+/Plasma+: n=90/322 p=4.763e-11
+  PET−/Plasma+ vs PET+/Plasma−: n=90/76 p=0.3051
+
+D_ADAS13_yr: KW H=151.5, p=1.27e-32
+  PET−/Plasma+ vs PET−/Plasma−: n=90/388 p=0.0684
+  PET−/Plasma+ vs PET+/Plasma+: n=90/317 p=3.312e-10
+  PET−/Plasma+ vs PET+/Plasma−: n=90/74 p=0.8107
+
+===== ③ 混杂校正（LinearRegression, 以 PET−/Plasma− 为参照）=====
+
+D_CDRSB_yr: 校正年龄/性别/教育后组系数（相对 PET−/Plasma−，Δ/年）
+  PET−/Plasma+  : +0.086
+  PET+/Plasma−  : +0.003
+  PET+/Plasma+  : +0.866
+
+D_ADAS13_yr: 校正年龄/性别/教育后组系数（相对 PET−/Plasma−，Δ/年）
+  PET−/Plasma+  : +0.294
+  PET+/Plasma−  : +0.160
+  PET+/Plasma+  : +2.814
+
+===== ④ 置换检验（1000 次打乱组标签，KW H 统计量）=====
+D_CDRSB_yr: 观察 H=199.6，置换 H≥观察 比例 p=0.000
+D_ADAS13_yr: 观察 H=151.5，置换 H≥观察 比例 p=0.000

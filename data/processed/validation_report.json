@@ -1,0 +1,958 @@
+{
+  "window": "180d",
+  "split": {
+    "unit": "RID",
+    "strategy": "PET_SITEID holdout",
+    "holdout_sites": [
+      "10",
+      "116",
+      "128",
+      "135",
+      "16",
+      "2",
+      "24",
+      "305",
+      "35",
+      "5",
+      "67",
+      "73",
+      "98"
+    ],
+    "n_train": 540,
+    "n_validation": 177
+  },
+  "fixed_thresholds": true,
+  "group_counts": {
+    "PET−/Plasma+": {
+      "train": {
+        "PET−/Plasma−": 273,
+        "PET−/Plasma+": 30,
+        "PET+/Plasma−": 47,
+        "PET+/Plasma+": 190
+      },
+      "validation": {
+        "PET−/Plasma−": 106,
+        "PET−/Plasma+": 11,
+        "PET+/Plasma−": 15,
+        "PET+/Plasma+": 45
+      }
+    },
+    "PET+/Plasma−": {
+      "train": {
+        "PET−/Plasma−": 273,
+        "PET−/Plasma+": 30,
+        "PET+/Plasma−": 47,
+        "PET+/Plasma+": 190
+      },
+      "validation": {
+        "PET−/Plasma−": 106,
+        "PET−/Plasma+": 11,
+        "PET+/Plasma−": 15,
+        "PET+/Plasma+": 45
+      }
+    }
+  },
+  "profiles": {
+    "PET−/Plasma+": {
+      "train": {
+        "target_group": "PET−/Plasma+",
+        "target_group_code": 1,
+        "reference_group": "PET−/Plasma−",
+        "alignment_window": "180d",
+        "sample": {
+          "n_total": 540,
+          "n_target": 30,
+          "n_reference": 273
+        },
+        "lag_evidence": {
+          "plasma_tau_vs_reference": {
+            "n_target": 30,
+            "n_reference": 273,
+            "target_median": 0.2445,
+            "reference_median": 0.092,
+            "median_difference": 0.1525,
+            "mannwhitney_p": 2.4810230257171874e-19,
+            "cohens_d": 2.3592660730039134,
+            "ci95": [
+              0.1294875,
+              0.1980125
+            ]
+          },
+          "tau_pet_vs_reference": {
+            "n_target": 21,
+            "n_reference": 213,
+            "target_median": 1.186,
+            "reference_median": 1.17,
+            "median_difference": 0.016000000000000014,
+            "mannwhitney_p": 0.22641859131856845,
+            "cohens_d": 0.2741195272311186,
+            "ci95": [
+              -0.020000000000000018,
+              0.044074999999999975
+            ]
+          },
+          "time_gap_days": {
+            "plasma_median": 13.5,
+            "tau_median": 8.0
+          }
+        },
+        "injury_evidence": {
+          "GFAP": {
+            "column": "GFAP_ALIGNED",
+            "effect": {
+              "n_target": 30,
+              "n_reference": 273,
+              "target_median": 144.8,
+              "reference_median": 107.7,
+              "median_difference": 37.10000000000001,
+              "mannwhitney_p": 1.123682620803378e-05,
+              "cohens_d": 0.9504537151975161,
+              "ci95": [
+                17.097499999999993,
+                126.46374999999998
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          },
+          "NfL": {
+            "column": "NFL_ALIGNED",
+            "effect": {
+              "n_target": 30,
+              "n_reference": 273,
+              "target_median": 24.75,
+              "reference_median": 13.4,
+              "median_difference": 11.35,
+              "mannwhitney_p": 1.1945252281967692e-07,
+              "cohens_d": 1.2394974639989633,
+              "ci95": [
+                7.4475,
+                15.102499999999997
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          }
+        },
+        "tau_evidence": {
+          "column": "TAU_SUVR_ALIGNED",
+          "effect": {
+            "n_target": 21,
+            "n_reference": 213,
+            "target_median": 1.186,
+            "reference_median": 1.17,
+            "median_difference": 0.016000000000000014,
+            "mannwhitney_p": 0.22641859131856845,
+            "cohens_d": 0.2741195272311186,
+            "ci95": [
+              -0.02299999999999991,
+              0.04507500000000008
+            ]
+          },
+          "missingness": {
+            "target": 0.3,
+            "reference": 0.21978021978021978
+          }
+        },
+        "trajectory_evidence": {
+          "outcome": "ADAS13",
+          "effect": {
+            "n_target": 23,
+            "n_reference": 159,
+            "target_median": 0.7451547092825569,
+            "reference_median": 0.22287568306010924,
+            "median_difference": 0.5222790262224477,
+            "mannwhitney_p": 0.21470840317613982,
+            "cohens_d": -0.06368620382713903,
+            "ci95": [
+              -0.41018230438669717,
+              0.9791127716152754
+            ]
+          },
+          "adjusted": {
+            "n": 348,
+            "model": "HuberRegressor",
+            "adjusted_difference": -0.21690178602668783,
+            "r2": -0.022294241082408517
+          }
+        },
+        "missingness_evidence": {
+          "TAU_SUVR_ALIGNED": {
+            "n": 399,
+            "missing_rate": 0.2611111111111111
+          },
+          "GFAP_ALIGNED": {
+            "n": 540,
+            "missing_rate": 0.0
+          },
+          "NFL_ALIGNED": {
+            "n": 540,
+            "missing_rate": 0.0
+          },
+          "D_ADAS13_yr": {
+            "n": 348,
+            "missing_rate": 0.35555555555555557
+          },
+          "PTAU217_bl": {
+            "n": 540,
+            "missing_rate": 0.0
+          }
+        },
+        "continuous_value_evidence": {
+          "pTau217_vs_tau_pet": {
+            "n": 21,
+            "rho": -0.09938292177292352,
+            "p": 0.6682098297313598
+          },
+          "pTau217_vs_GFAP": {
+            "n": 30,
+            "rho": 0.09810901001112346,
+            "p": 0.6060088503757058
+          },
+          "pTau217_vs_NfL": {
+            "n": 30,
+            "rho": -0.11747691695789099,
+            "p": 0.5364084091642578
+          }
+        },
+        "multiple_testing": {
+          "method": "Benjamini-Hochberg",
+          "q_values": {
+            "tau_pet_vs_reference": 0.22641859131856848,
+            "trajectory": 0.22641859131856848,
+            "GFAP_vs_reference": 1.87280436800563e-05,
+            "NfL_vs_reference": 2.9863130704919234e-07,
+            "plasma_tau_vs_reference": 1.2405115128585936e-18
+          }
+        },
+        "candidate_mechanism_ranking": [
+          {
+            "mechanism": "non_ad_injury",
+            "score": 1.0,
+            "reasons": [
+              "GFAP/NfL 至少一个相对参考组升高"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "temporal_lag",
+            "score": 0.25,
+            "reasons": [
+              "tau PET 与 plasma p-tau217 同向，暂不支持明显滞后"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "measurement_noise",
+            "score": 0.0,
+            "reasons": [],
+            "interpretation": "候选机制，需外部验证"
+          }
+        ],
+        "negative_evidence": [
+          "机制评分仅用于排序，不等同于因果证明。",
+          "时间对齐窗口和 tau PET 选择偏倚仍可能影响方向。"
+        ],
+        "next_best_action": {
+          "action": "profile_mechanism",
+          "params": {
+            "target_group": "PET+/Plasma−",
+            "markers": [
+              "tau_pet",
+              "GFAP",
+              "NfL"
+            ],
+            "alignment_window": "180d",
+            "outcome": "ADAS13"
+          }
+        }
+      },
+      "validation": {
+        "target_group": "PET−/Plasma+",
+        "target_group_code": 1,
+        "reference_group": "PET−/Plasma−",
+        "alignment_window": "180d",
+        "sample": {
+          "n_total": 177,
+          "n_target": 11,
+          "n_reference": 106
+        },
+        "lag_evidence": {
+          "plasma_tau_vs_reference": {
+            "n_target": 11,
+            "n_reference": 106,
+            "target_median": 0.22,
+            "reference_median": 0.085,
+            "median_difference": 0.135,
+            "mannwhitney_p": 5.310171321802309e-08,
+            "cohens_d": 3.4720722451568506,
+            "ci95": [
+              0.11299999999999999,
+              0.296
+            ]
+          },
+          "tau_pet_vs_reference": {
+            "n_target": 6,
+            "n_reference": 87,
+            "target_median": 1.2505000000000002,
+            "reference_median": 1.175,
+            "median_difference": 0.07550000000000012,
+            "mannwhitney_p": 0.6445345954084216,
+            "cohens_d": 1.6865967614493775,
+            "ci95": [
+              -0.09306249999999998,
+              0.6064999999999998
+            ]
+          },
+          "time_gap_days": {
+            "plasma_median": 0.0,
+            "tau_median": 8.5
+          }
+        },
+        "injury_evidence": {
+          "GFAP": {
+            "column": "GFAP_ALIGNED",
+            "effect": {
+              "n_target": 11,
+              "n_reference": 106,
+              "target_median": 191.8,
+              "reference_median": 116.1,
+              "median_difference": 75.70000000000002,
+              "mannwhitney_p": 0.002846676245802297,
+              "cohens_d": 1.2314881860541116,
+              "ci95": [
+                8.597500000000009,
+                170.41374999999996
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          },
+          "NfL": {
+            "column": "NFL_ALIGNED",
+            "effect": {
+              "n_target": 11,
+              "n_reference": 106,
+              "target_median": 22.8,
+              "reference_median": 13.5,
+              "median_difference": 9.3,
+              "mannwhitney_p": 0.0004150257215048259,
+              "cohens_d": 1.2144479543799638,
+              "ci95": [
+                3.794999999999999,
+                19.15125
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          }
+        },
+        "tau_evidence": {
+          "column": "TAU_SUVR_ALIGNED",
+          "effect": {
+            "n_target": 6,
+            "n_reference": 87,
+            "target_median": 1.2505000000000002,
+            "reference_median": 1.175,
+            "median_difference": 0.07550000000000012,
+            "mannwhitney_p": 0.6445345954084216,
+            "cohens_d": 1.6865967614493775,
+            "ci95": [
+              -0.08968750000000011,
+              0.6184999999999998
+            ]
+          },
+          "missingness": {
+            "target": 0.45454545454545453,
+            "reference": 0.1792452830188679
+          }
+        },
+        "trajectory_evidence": {
+          "outcome": "ADAS13",
+          "effect": {
+            "n_target": 6,
+            "n_reference": 69,
+            "target_median": 0.9599038453479503,
+            "reference_median": 0.16763908205841452,
+            "median_difference": 0.7922647632895358,
+            "mannwhitney_p": 0.3136039686222977,
+            "cohens_d": 0.6445864887598056,
+            "ci95": [
+              -1.5148318601856923,
+              5.171889094990597
+            ]
+          },
+          "adjusted": {
+            "n": 113,
+            "model": "HuberRegressor",
+            "adjusted_difference": 0.03561946075214126,
+            "r2": -0.021662598064352334
+          }
+        },
+        "missingness_evidence": {
+          "TAU_SUVR_ALIGNED": {
+            "n": 136,
+            "missing_rate": 0.23163841807909605
+          },
+          "GFAP_ALIGNED": {
+            "n": 177,
+            "missing_rate": 0.0
+          },
+          "NFL_ALIGNED": {
+            "n": 177,
+            "missing_rate": 0.0
+          },
+          "D_ADAS13_yr": {
+            "n": 113,
+            "missing_rate": 0.3615819209039548
+          },
+          "PTAU217_bl": {
+            "n": 177,
+            "missing_rate": 0.0
+          }
+        },
+        "continuous_value_evidence": {
+          "pTau217_vs_tau_pet": {
+            "n": 6,
+            "rho": null,
+            "p": null
+          },
+          "pTau217_vs_GFAP": {
+            "n": 11,
+            "rho": 0.13636363636363638,
+            "p": 0.6893090205863619
+          },
+          "pTau217_vs_NfL": {
+            "n": 11,
+            "rho": 0.0,
+            "p": 1.0
+          }
+        },
+        "multiple_testing": {
+          "method": "Benjamini-Hochberg",
+          "q_values": {
+            "tau_pet_vs_reference": 0.6445345954084216,
+            "trajectory": 0.39200496077787217,
+            "GFAP_vs_reference": 0.004744460409670495,
+            "NfL_vs_reference": 0.0010375643037620647,
+            "plasma_tau_vs_reference": 2.6550856609011545e-07
+          }
+        },
+        "candidate_mechanism_ranking": [
+          {
+            "mechanism": "non_ad_injury",
+            "score": 1.0,
+            "reasons": [
+              "GFAP/NfL 至少一个相对参考组升高"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "temporal_lag",
+            "score": 0.25,
+            "reasons": [
+              "tau PET 与 plasma p-tau217 同向，暂不支持明显滞后"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "measurement_noise",
+            "score": 0.0,
+            "reasons": [],
+            "interpretation": "候选机制，需外部验证"
+          }
+        ],
+        "negative_evidence": [
+          "机制评分仅用于排序，不等同于因果证明。",
+          "时间对齐窗口和 tau PET 选择偏倚仍可能影响方向。"
+        ],
+        "next_best_action": {
+          "action": "profile_mechanism",
+          "params": {
+            "target_group": "PET+/Plasma−",
+            "markers": [
+              "tau_pet",
+              "GFAP",
+              "NfL"
+            ],
+            "alignment_window": "180d",
+            "outcome": "ADAS13"
+          }
+        }
+      }
+    },
+    "PET+/Plasma−": {
+      "train": {
+        "target_group": "PET+/Plasma−",
+        "target_group_code": 2,
+        "reference_group": "PET−/Plasma−",
+        "alignment_window": "180d",
+        "sample": {
+          "n_total": 540,
+          "n_target": 47,
+          "n_reference": 273
+        },
+        "lag_evidence": {
+          "plasma_tau_vs_reference": {
+            "n_target": 47,
+            "n_reference": 273,
+            "target_median": 0.129,
+            "reference_median": 0.092,
+            "median_difference": 0.037000000000000005,
+            "mannwhitney_p": 1.6382296024278123e-07,
+            "cohens_d": 0.8342436806626585,
+            "ci95": [
+              0.017,
+              0.04802499999999999
+            ]
+          },
+          "tau_pet_vs_reference": {
+            "n_target": 36,
+            "n_reference": 213,
+            "target_median": 1.2045,
+            "reference_median": 1.17,
+            "median_difference": 0.034499999999999975,
+            "mannwhitney_p": 0.0476644245261836,
+            "cohens_d": 0.4743470998402346,
+            "ci95": [
+              -0.011049999999999897,
+              0.07402500000000004
+            ]
+          },
+          "time_gap_days": {
+            "plasma_median": 14.0,
+            "tau_median": 14.5
+          }
+        },
+        "injury_evidence": {
+          "GFAP": {
+            "column": "GFAP_ALIGNED",
+            "effect": {
+              "n_target": 47,
+              "n_reference": 273,
+              "target_median": 117.5,
+              "reference_median": 107.7,
+              "median_difference": 9.799999999999997,
+              "mannwhitney_p": 0.2468091751391489,
+              "cohens_d": 0.11655334693567553,
+              "ci95": [
+                -7.952500000000002,
+                20.902500000000003
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          },
+          "NfL": {
+            "column": "NFL_ALIGNED",
+            "effect": {
+              "n_target": 47,
+              "n_reference": 273,
+              "target_median": 14.0,
+              "reference_median": 13.4,
+              "median_difference": 0.5999999999999996,
+              "mannwhitney_p": 0.28642801928794004,
+              "cohens_d": 0.011503635874312806,
+              "ci95": [
+                -1.1000000000000014,
+                2.4000000000000004
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          }
+        },
+        "tau_evidence": {
+          "column": "TAU_SUVR_ALIGNED",
+          "effect": {
+            "n_target": 36,
+            "n_reference": 213,
+            "target_median": 1.2045,
+            "reference_median": 1.17,
+            "median_difference": 0.034499999999999975,
+            "mannwhitney_p": 0.0476644245261836,
+            "cohens_d": 0.4743470998402346,
+            "ci95": [
+              -0.013537500000000062,
+              0.07902499999999994
+            ]
+          },
+          "missingness": {
+            "target": 0.23404255319148937,
+            "reference": 0.21978021978021978
+          }
+        },
+        "trajectory_evidence": {
+          "outcome": "ADAS13",
+          "effect": {
+            "n_target": 31,
+            "n_reference": 159,
+            "target_median": 0.32496936600958976,
+            "reference_median": 0.22287568306010924,
+            "median_difference": 0.10209368294948051,
+            "mannwhitney_p": 0.764249226368983,
+            "cohens_d": -0.13508614635314511,
+            "ci95": [
+              -0.2753839794652303,
+              0.4566775413709934
+            ]
+          },
+          "adjusted": {
+            "n": 348,
+            "model": "HuberRegressor",
+            "adjusted_difference": -0.4652237356351976,
+            "r2": -0.01883313570138534
+          }
+        },
+        "missingness_evidence": {
+          "TAU_SUVR_ALIGNED": {
+            "n": 399,
+            "missing_rate": 0.2611111111111111
+          },
+          "GFAP_ALIGNED": {
+            "n": 540,
+            "missing_rate": 0.0
+          },
+          "NFL_ALIGNED": {
+            "n": 540,
+            "missing_rate": 0.0
+          },
+          "D_ADAS13_yr": {
+            "n": 348,
+            "missing_rate": 0.35555555555555557
+          },
+          "PTAU217_bl": {
+            "n": 540,
+            "missing_rate": 0.0
+          }
+        },
+        "continuous_value_evidence": {
+          "pTau217_vs_tau_pet": {
+            "n": 36,
+            "rho": 0.1388102167129493,
+            "p": 0.4194429894693574
+          },
+          "pTau217_vs_GFAP": {
+            "n": 47,
+            "rho": 0.3281376655425576,
+            "p": 0.024336597368544575
+          },
+          "pTau217_vs_NfL": {
+            "n": 47,
+            "rho": 0.26158251611082056,
+            "p": 0.07571673913924554
+          }
+        },
+        "multiple_testing": {
+          "method": "Benjamini-Hochberg",
+          "q_values": {
+            "trajectory": 0.764249226368983,
+            "NfL_vs_reference": 0.35803502410992505,
+            "GFAP_vs_reference": 0.35803502410992505,
+            "tau_pet_vs_reference": 0.119161061315459,
+            "plasma_tau_vs_reference": 8.191148012139061e-07
+          }
+        },
+        "candidate_mechanism_ranking": [
+          {
+            "mechanism": "non_ad_injury",
+            "score": 1.0,
+            "reasons": [
+              "GFAP/NfL 至少一个相对参考组升高"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "temporal_lag",
+            "score": 0.25,
+            "reasons": [
+              "tau PET 与 plasma p-tau217 同向，暂不支持明显滞后"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "measurement_noise",
+            "score": 0.0,
+            "reasons": [],
+            "interpretation": "候选机制，需外部验证"
+          }
+        ],
+        "negative_evidence": [
+          "机制评分仅用于排序，不等同于因果证明。",
+          "时间对齐窗口和 tau PET 选择偏倚仍可能影响方向。"
+        ],
+        "next_best_action": {
+          "action": "profile_mechanism",
+          "params": {
+            "target_group": "PET−/Plasma+",
+            "markers": [
+              "tau_pet",
+              "GFAP",
+              "NfL"
+            ],
+            "alignment_window": "180d",
+            "outcome": "ADAS13"
+          }
+        }
+      },
+      "validation": {
+        "target_group": "PET+/Plasma−",
+        "target_group_code": 2,
+        "reference_group": "PET−/Plasma−",
+        "alignment_window": "180d",
+        "sample": {
+          "n_total": 177,
+          "n_target": 15,
+          "n_reference": 106
+        },
+        "lag_evidence": {
+          "plasma_tau_vs_reference": {
+            "n_target": 15,
+            "n_reference": 106,
+            "target_median": 0.131,
+            "reference_median": 0.085,
+            "median_difference": 0.046,
+            "mannwhitney_p": 0.004351570102169263,
+            "cohens_d": 0.882944112379879,
+            "ci95": [
+              0.023500000000000007,
+              0.0765
+            ]
+          },
+          "tau_pet_vs_reference": {
+            "n_target": 12,
+            "n_reference": 87,
+            "target_median": 1.193,
+            "reference_median": 1.175,
+            "median_difference": 0.018000000000000016,
+            "mannwhitney_p": 0.47584096083912153,
+            "cohens_d": 0.6063580795791325,
+            "ci95": [
+              -0.04600000000000004,
+              0.09009999999999976
+            ]
+          },
+          "time_gap_days": {
+            "plasma_median": 2.0,
+            "tau_median": 4.5
+          }
+        },
+        "injury_evidence": {
+          "GFAP": {
+            "column": "GFAP_ALIGNED",
+            "effect": {
+              "n_target": 15,
+              "n_reference": 106,
+              "target_median": 143.5,
+              "reference_median": 116.1,
+              "median_difference": 27.400000000000006,
+              "mannwhitney_p": 0.22279829878295532,
+              "cohens_d": 0.18726978067898406,
+              "ci95": [
+                -1.110000000000008,
+                45.5025
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          },
+          "NfL": {
+            "column": "NFL_ALIGNED",
+            "effect": {
+              "n_target": 15,
+              "n_reference": 106,
+              "target_median": 12.7,
+              "reference_median": 13.5,
+              "median_difference": -0.8000000000000007,
+              "mannwhitney_p": 0.6229943714759193,
+              "cohens_d": -0.19565366682047408,
+              "ci95": [
+                -3.0,
+                4.107499999999995
+              ]
+            },
+            "missingness": {
+              "target": 0.0,
+              "reference": 0.0
+            }
+          }
+        },
+        "tau_evidence": {
+          "column": "TAU_SUVR_ALIGNED",
+          "effect": {
+            "n_target": 12,
+            "n_reference": 87,
+            "target_median": 1.193,
+            "reference_median": 1.175,
+            "median_difference": 0.018000000000000016,
+            "mannwhitney_p": 0.47584096083912153,
+            "cohens_d": 0.6063580795791325,
+            "ci95": [
+              -0.04205000000000003,
+              0.10005000000000004
+            ]
+          },
+          "missingness": {
+            "target": 0.2,
+            "reference": 0.1792452830188679
+          }
+        },
+        "trajectory_evidence": {
+          "outcome": "ADAS13",
+          "effect": {
+            "n_target": 8,
+            "n_reference": 69,
+            "target_median": 0.9180619872422099,
+            "reference_median": 0.16763908205841452,
+            "median_difference": 0.7504229051837954,
+            "mannwhitney_p": 0.11200231102705795,
+            "cohens_d": 0.6209716204020043,
+            "ci95": [
+              -0.4392075573950968,
+              4.117707299978802
+            ]
+          },
+          "adjusted": {
+            "n": 113,
+            "model": "HuberRegressor",
+            "adjusted_difference": 0.11415705837164372,
+            "r2": -0.023037937971141398
+          }
+        },
+        "missingness_evidence": {
+          "TAU_SUVR_ALIGNED": {
+            "n": 136,
+            "missing_rate": 0.23163841807909605
+          },
+          "GFAP_ALIGNED": {
+            "n": 177,
+            "missing_rate": 0.0
+          },
+          "NFL_ALIGNED": {
+            "n": 177,
+            "missing_rate": 0.0
+          },
+          "D_ADAS13_yr": {
+            "n": 113,
+            "missing_rate": 0.3615819209039548
+          },
+          "PTAU217_bl": {
+            "n": 177,
+            "missing_rate": 0.0
+          }
+        },
+        "continuous_value_evidence": {
+          "pTau217_vs_tau_pet": {
+            "n": 12,
+            "rho": -0.055944055944055944,
+            "p": 0.8628980736949713
+          },
+          "pTau217_vs_GFAP": {
+            "n": 15,
+            "rho": 0.5035714285714286,
+            "p": 0.05565451716115846
+          },
+          "pTau217_vs_NfL": {
+            "n": 15,
+            "rho": 0.5071428571428571,
+            "p": 0.05366366378080595
+          }
+        },
+        "multiple_testing": {
+          "method": "Benjamini-Hochberg",
+          "q_values": {
+            "NfL_vs_reference": 0.6229943714759193,
+            "tau_pet_vs_reference": 0.5948012010489019,
+            "GFAP_vs_reference": 0.3713304979715922,
+            "trajectory": 0.2800057775676449,
+            "plasma_tau_vs_reference": 0.02175785051084632
+          }
+        },
+        "candidate_mechanism_ranking": [
+          {
+            "mechanism": "non_ad_injury",
+            "score": 1.0,
+            "reasons": [
+              "GFAP/NfL 至少一个相对参考组升高"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "temporal_lag",
+            "score": 0.25,
+            "reasons": [
+              "tau PET 与 plasma p-tau217 同向，暂不支持明显滞后"
+            ],
+            "interpretation": "候选机制，需外部验证"
+          },
+          {
+            "mechanism": "measurement_noise",
+            "score": 0.0,
+            "reasons": [],
+            "interpretation": "候选机制，需外部验证"
+          }
+        ],
+        "negative_evidence": [
+          "机制评分仅用于排序，不等同于因果证明。",
+          "时间对齐窗口和 tau PET 选择偏倚仍可能影响方向。"
+        ],
+        "next_best_action": {
+          "action": "profile_mechanism",
+          "params": {
+            "target_group": "PET−/Plasma+",
+            "markers": [
+              "tau_pet",
+              "GFAP",
+              "NfL"
+            ],
+            "alignment_window": "180d",
+            "outcome": "ADAS13"
+          }
+        }
+      }
+    }
+  },
+  "ranking_reproduction": {
+    "PET−/Plasma+": {
+      "train_top2": [
+        "non_ad_injury",
+        "temporal_lag"
+      ],
+      "validation_top2": [
+        "non_ad_injury",
+        "temporal_lag"
+      ],
+      "top2_overlap": 1.0
+    },
+    "PET+/Plasma−": {
+      "train_top2": [
+        "non_ad_injury",
+        "temporal_lag"
+      ],
+      "validation_top2": [
+        "non_ad_injury",
+        "temporal_lag"
+      ],
+      "top2_overlap": 1.0
+    }
+  },
+  "limitations": [
+    "site-held-out 是内部验证，不等同于独立外部队列。",
+    "阈值固定，但机制排名仍属于假设生成。",
+    "同一 RID 仅出现在一个 split；alignment 后以 index PET site 作为分层单位。"
+  ]
+}

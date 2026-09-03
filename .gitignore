@@ -1,0 +1,23 @@
+# ADNI 原始数据（DUA 约束，不入库）
+data/raw/
+ADNI_MERGE/
+# 个体级宽表（含 RID，DUA 约束）
+data/processed/subjects_wide.csv
+data/processed/missing_report.csv
+# 中间产物
+__pycache__/
+*.pyc
+*_tmp.html
+!dashboard.html
+md2docx_tmp.docx
+# Python 虚拟环境（复赛探索环境本地依赖）
+.venv/
+# LLM 配置（含 API key，不入库）
+llm_config.json
+
+# Local generated aggregate reports
+data/processed/raw_validation.json
+
+# Local test caches
+.pytest_cache/
+

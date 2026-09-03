@@ -1,0 +1,14 @@
+[project]
+name = "goai-open-exploration"
+version = "0.2.0"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "pandas>=2.2,<3",
+  "numpy>=2.0,<3",
+  "scipy>=1.13,<2",
+  "scikit-learn>=1.5,<2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts"]
